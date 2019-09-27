@@ -8,12 +8,7 @@ var pos = {
             cb(res);
         })
     },
-    product_by_id: function (id, cb) {
-        orm.itemsByCond("products", `id = ${id}`, function (res) {
-            cb(res);
-        })
-    },
-    new_sale: function (total, products) {
+    new_sale: function (total, products, cb) {
         var colArray_sale = ["sale_date", "sale_total"];
         var colArray_products = ["sale_id", "product_name"];
 
