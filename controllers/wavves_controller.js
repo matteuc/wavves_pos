@@ -10,9 +10,9 @@ var pos = require("../models/pos.js");
 // HTML ROUTES
 // 
 // 
-// "/pos": POS Dashboard
+// "/": POS Dashboard
 // GET: To load main dashboard **
-router.get("/pos", function (req, res) {
+router.get("/", function (req, res) {
     pos.all_products(function (data) {
         var obj = {
             products: data
@@ -20,12 +20,6 @@ router.get("/pos", function (req, res) {
 
         res.render("pos_dash", obj);
     })
-});
-
-// "/mgt": Main MGT Dashboard
-// GET: To load main management dashboard
-router.get("/mgt", function (req, res) {
-    res.render("mgt_dash");
 });
 
 // "/mgt/sales": MGT Sales Dashboard
@@ -93,3 +87,6 @@ router.get("/api/sales/:id", function (req, res) {
         res.json(data);
     })
 })
+
+// Export routes for server.js to use.
+module.exports = router;
