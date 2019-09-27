@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/assets/css/main.css" type="text/css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/main.css" type="text/css" />
     <script src="https://kit.fontawesome.com/325ada46a1.js" crossorigin="anonymous"></script>
     <link rel="icon" href="/assets/images/favicon.ico">
-    <title>Wavves!</title>
+    <title>wavves</title>
 
 
 </head>
@@ -16,22 +16,24 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6bf5c7;">
         <a class="navbar-brand" href="https://github.com/matteuc/wavves_pos">
-            <img src="/assets/images/logo.png" class="img-fluid" alt="">
+            <img src="/assets/images/logo.png" class="" alt="">
         </a>
+
     </nav>
-    <ul class="nav nav-tabs">
+    <ul id="dash_tabs" class="nav nav-tabs nav-justified">
         <li class="nav-item">
-            <a title="Point of Sale (POS)" class="nav-link active" href="/"><i class="fas fa-cash-register"></i></a>
+            <a title="Point of Sale (POS)" class="nav-link active" href="/"><i class="fas fa-cash-register fa-lg"></i></a>
         </li>
         <li class="nav-item">
-            <a title="View & Edit Products" class="nav-link" href="/mgt_products"><i class="fas fa-boxes"></i></a>
+            <a title="View & Edit Products" class="nav-link" href="/mgt_products"><i class="fas fa-boxes fa-lg"></i></a>
         </li>
         <li class="nav-item">
             <a title="View Transactions" class="nav-link" href="/mgt_sales"><i
-                    class="fas fa-file-invoice-dollar"></i></a>
+                    class="fas fa-file-invoice-dollar fa-lg"></i></a>
         </li>
 
     </ul>
+
     <div class="container">
         {{{ body }}}
     </div>

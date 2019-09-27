@@ -1,9 +1,15 @@
 .navbar {
     position: relative;
+    height: 70px;
 }
 .navbar-brand {
     position: absolute;
     left: 50%;
-    margin-left: -50px !important;  /* 50% of your logo width */
+    margin-left: -150px !important;  /* 50% of your logo width */
     display: block;
+    padding-top: 0
+}
+
+#dash_tabs {
+    margin-top: 5px;
 }

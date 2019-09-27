@@ -39,7 +39,7 @@ function objToSql(ob) {
     return arr.toString();
 }
 
-module.exports.orm = {
+var orm = {
     all: function (table, cb) {
         var query = `SELECT * FROM ${table};`;
         connection.query(query, function (err, result) {
@@ -94,3 +94,5 @@ module.exports.orm = {
     }
 
 }
+
+module.exports = orm;
