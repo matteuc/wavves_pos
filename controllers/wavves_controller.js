@@ -7,6 +7,8 @@ var router = express.Router();
 var mgt = require("../models/mgt.js");
 var pos = require("../models/pos.js");
 
+var cart = [];
+
 // HTML ROUTES
 // 
 // 
@@ -24,7 +26,7 @@ router.get("/", function (req, res) {
 
 // "/mgt/sales": MGT Sales Dashboard
 // GET: To load sales management dashboard
-router.get("/mgt/sales", function (req, res) {
+router.get("/sales", function (req, res) {
     mgt.all_sales(function (data) {
         var obj = {
             sales: data
@@ -36,7 +38,7 @@ router.get("/mgt/sales", function (req, res) {
 
 // "/mgt/products": MGT Products Dashboard
 // GET: To load product management dashboard
-router.get("/mgt/products", function (req, res) {
+router.get("/products", function (req, res) {
     pos.all_products(function (data) {
         var obj = {
             products: data
@@ -51,7 +53,7 @@ router.get("/mgt/products", function (req, res) {
 // 
 
 // "/api/products": Add a new product 
-// GET
+// POST
 router.post("/api/products", function (req, res) {
     mgt.add_product([req.body.name, req.body.price], function () {
         res.json(true);
