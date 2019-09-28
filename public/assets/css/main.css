@@ -1,3 +1,7 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+
 .navbar {
     position: relative;
     height: 70px;
@@ -67,15 +71,19 @@ a:hover {
   #products, #cart {
       margin-top: 10px;
   }
+  
+  .product-pos {
+      cursor: pointer;
+  }
 
   /* MGT DASH */
   .delete-product-btn {
-      color: rgb(252, 69, 69);
+      color: #F03A47;
       cursor: pointer;
   }
 
   .edit-product-btn {
-      color: rgb(252, 188, 70);
+      color: #16BAC5;
       cursor: pointer;
   }
 
@@ -86,4 +94,8 @@ a:hover {
 
     label {
         font-weight: bold;
+    }
+
+    .badge {
+        font-size: 90%;
     }

@@ -21,7 +21,8 @@ CREATE TABLE products_sold(
     id INT NOT NULL auto_increment PRIMARY KEY,
     sale_id INT NOT NULL, 
     product_name VARCHAR(100) NULL,
-    quantity INT NOT NULL
+    quantity INT NOT NULL,
+    price DEC(10, 2) NULL
 );
 
 

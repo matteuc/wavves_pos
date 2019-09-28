@@ -10,7 +10,7 @@ var pos = {
     },
     new_sale: function (total, products, cb) {
         var colArray_sale = ["sale_date", "sale_total"];
-        var colArray_products = ["sale_id", "product_name", "quantity"];
+        var colArray_products = ["sale_id", "product_name", "quantity", "price"];
 
         // Get the current date & time
         var sale_date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -22,7 +22,7 @@ var pos = {
 
             // Add all products to the 'product_sales' table
             for (product of products) {
-                orm.create("products_sold", colArray_products, [sale_id, product.name, product.quantity], function (res) {
+                orm.create("products_sold", colArray_products, [sale_id, product.name, product.quantity, product.price], function (res) {
                     // cb(res);
                 });
             }

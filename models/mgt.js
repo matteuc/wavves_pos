@@ -8,7 +8,7 @@ var mgt = {
         })
     },
     sale_by_id: function (sale_id, cb) {
-        orm.itemsByCond("product_sales", `sale_id = ${sale_id}`, function (res) {
+        orm.itemsByCondition("products_sold", `sale_id = ${sale_id}`, function (res) {
             cb(res);
         })
     },

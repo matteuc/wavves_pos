@@ -179,16 +179,16 @@ $(document).ready(function () {
                         type: "PUT",
                         data: updatedProduct
                     }).then(
-                            function () {
-                                // Update product on page
-                                $(`#product-${id}-name`).text(updatedProduct.product_name);
+                        function () {
+                            // Update product on page
+                            $(`#product-${id}-name`).text(updatedProduct.product_name);
 
-                                bootbox.alert({
-                                    message: `The product (ID #${id}) has been updated!`,
-                                    centerVertical: true
-                                });
-                            }
-                        );
+                            bootbox.alert({
+                                message: `The product (ID #${id}) has been updated!`,
+                                centerVertical: true
+                            });
+                        }
+                    );
                 }
             }
         })
@@ -216,24 +216,64 @@ $(document).ready(function () {
                     price: parseFloat($("#new-product-price").val().trim()).toFixed(2)
                 };
 
-                if (response ) {
+                if (response) {
                     $.ajax(`/api/products`, {
                         type: "POST",
                         data: newProduct
                     }).then(
-                            function () {
-                                bootbox.alert({
-                                    message: `The new product has been added!`,
-                                    centerVertical: true,
-                                    callback: function() {
-                                        location.reload();
-                                    }
-                                });
-                            }
-                        );
+                        function () {
+                            bootbox.alert({
+                                message: `The new product has been added!`,
+                                centerVertical: true,
+                                callback: function () {
+                                    location.reload();
+                                }
+                            });
+                        }
+                    );
                 }
             }
         })
+    })
+
+    // MGT SALES DASH
+    $(document).on('click', ".sale-block", function () {
+        var id = $(this).attr("data-id");
+        var total = $(this).attr("data-total");
+        var date = $(this).attr("data-date");
+
+        $.get(`/api/sales/${id}`, function (data) {
+            var products = data;
+
+            var product_div = $("<div class='card text-center'>");
+            var product_div_header = $("<div class='card-header text-center'>");
+            product_div_header.text(`Transaction ID #${id}`);
+            var product_div_header_date = $("<p class='text-center text-muted'>");
+            product_div_header_date.text(date);
+            product_div_header_date.appendTo(product_div_header);
+
+            var product_list = $("<div class='card-body'>");
+            var product_div_footer = $('<div class="card-footer text-muted text-center">');
+            product_div_footer.html(`Total: $<strong>${total}</strong>`);
+
+            $.each(products, function(idx, product) {
+                var product_block = $(`<div>`);
+                var product_name = $(`<p class="font-weight-bold text-center">${product.product_name}</p>`);
+                var product_total = $(`<p class="text-center">$${product.price} x ${product.quantity}</p>`);
+
+                product_block.append(product_name).append(product_total);
+                product_list.append(product_block);
+            })
+
+            product_div.append(product_div_header).append(product_list).append(product_div_footer);
+
+            bootbox.alert({
+                message: product_div.html(),
+                centerVertical: true,
+                closeButton: false
+            })
+        })
+
     })
 
 
