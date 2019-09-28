@@ -7,8 +7,6 @@ var router = express.Router();
 var mgt = require("../models/mgt.js");
 var pos = require("../models/pos.js");
 
-var cart = [];
-
 // HTML ROUTES
 // 
 // 
@@ -29,7 +27,7 @@ router.get("/", function (req, res) {
 router.get("/sales", function (req, res) {
     mgt.all_sales(function (data) {
         var obj = {
-            sales: data
+            sales: data.reverse()
         };
 
         res.render("mgt_dash_sales", obj);

@@ -32,6 +32,7 @@
 .nav-tabs .nav-link:hover {
     border-color:  #6bf5c7;
     background-color:  #6bf5c7;
+
 }
 
 #dash_tabs {
@@ -77,3 +78,12 @@ a:hover {
       color: rgb(252, 188, 70);
       cursor: pointer;
   }
+
+  #add-product-btn {
+    color: #5ac9a4;
+    cursor: pointer;
+}
+
+    label {
+        font-weight: bold;
+    }

@@ -127,7 +127,7 @@ $(document).ready(function () {
 
         bootbox.confirm(
             {
-                message: `Are you sure you want to delete product #${id}?`,
+                message: `Are you sure you want to delete this product (ID #${id})?`,
                 centerVertical: true,
                 callback: function (response) {
                     if (response) {
@@ -140,7 +140,7 @@ $(document).ready(function () {
                                 $(`.product-mgt[data-id='${id}']`).remove();
 
                                 bootbox.alert({
-                                    message: `Product #${id} has been deleted!`,
+                                    message: `The product (ID #${id}) has been deleted!`,
                                     centerVertical: true
                                 });
                             }
@@ -152,22 +152,88 @@ $(document).ready(function () {
 
     $(document).on('click', ".edit-product-btn", function () {
         var id = $(this).attr("data-id");
+        var curr_name = $(this).attr("data-name");
+        var curr_price = parseFloat($(this).attr("data-price")).toFixed(2);
 
-    //     bootbox.confirm("<form id='infos' action=''>\
-    // First name:<input type='text' name='first_name' /><br/>\
-    // Last name:<input type='text' name='last_name' />\
-    // </form>", function (result) {
-    //         if (result)
-    //             $('#infos').submit();
-    //     });
+        bootbox.confirm({
+            message:
+                `<form>\
+                <div class="form-group">\
+                    <label for="new-product-name">Product Name</label>\
+                     <input class="form-control" id="new-product-name" value="${curr_name}" required>\
+                </div>\
+                <div class="form-group">\
+                    <label for="new-product-price">Product Price (USD)</label>\
+                    <input type="number" class="form-control" id="new-product-price" value="${curr_price}" required>\
+                 </div>\
+            </form>`,
+            centerVertical: true,
+            callback: function (response) {
+                var updatedProduct = {
+                    product_name: $("#new-product-name").val().trim(),
+                    price: parseFloat($("#new-product-price").val().trim()).toFixed(2)
+                };
 
-    bootbox.dialog({ 
-        message: '<div class="text-center"><i class="fa fa-spin fa-spinner"></i> Loading...</div>', 
-        closeButton: true,
-        centerVertical: true 
+                if (response && ((updatedProduct.product_name != curr_name) || (updatedProduct.price != curr_price))) {
+                    $.ajax(`/api/products/${id}`, {
+                        type: "PUT",
+                        data: updatedProduct
+                    }).then(
+                            function () {
+                                // Update product on page
+                                $(`#product-${id}-name`).text(updatedProduct.product_name);
+
+                                bootbox.alert({
+                                    message: `The product (ID #${id}) has been updated!`,
+                                    centerVertical: true
+                                });
+                            }
+                        );
+                }
+            }
+        })
+
+
     })
-    
 
+    $("#add-product-btn").on("click", function () {
+        bootbox.confirm({
+            message:
+                `<form>\
+                <div class="form-group">\
+                    <label for="new-product-name">Product Name</label>\
+                     <input class="form-control" id="new-product-name" placeholder="Product Name" required>\
+                </div>\
+                <div class="form-group">\
+                    <label for="new-product-price">Product Price (USD)</label>\
+                    <input type="number" class="form-control" id="new-product-price" placeholder="Product Price" required>\
+                 </div>\
+            </form>`,
+            centerVertical: true,
+            callback: function (response) {
+                var newProduct = {
+                    name: $("#new-product-name").val().trim(),
+                    price: parseFloat($("#new-product-price").val().trim()).toFixed(2)
+                };
+
+                if (response ) {
+                    $.ajax(`/api/products`, {
+                        type: "POST",
+                        data: newProduct
+                    }).then(
+                            function () {
+                                bootbox.alert({
+                                    message: `The new product has been added!`,
+                                    centerVertical: true,
+                                    callback: function() {
+                                        location.reload();
+                                    }
+                                });
+                            }
+                        );
+                }
+            }
+        })
     })
 
 

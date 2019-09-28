@@ -1,17 +1,21 @@
 <div class="row">
     <div class="col-sm-12">
         <div id="products" class="card">
-            <h5 class="card-header text-center">All Products</h5>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span></span>
+                <h5 class="text-center">All Products </h5>
+                <i id="add-product-btn" class="fas fa-plus-circle fa-lg"></i>
+            </div>
             <div id="products-content" class="card-body">
                 {{#if products.length}}
                     {{#each products}}
                         {{> product_mgt}}
                     {{/each}}
                 {{else}}
-                    <div class="text-center">
-                        <p class="card-text text-muted text-center">No products yet... 😥</p>
-                        <p><i class="fas fa-cubes fa-3x"></i></p>
-                    </div>               
+                <div class="text-center">
+                    <p class="card-text text-muted text-center">No products yet... 😥</p>
+                    <p><i class="fas fa-cubes fa-3x"></i></p>
+                </div>
                 {{/if}}
 
             </div>
