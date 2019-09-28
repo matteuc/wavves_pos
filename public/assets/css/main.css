@@ -66,3 +66,14 @@ a:hover {
   #products, #cart {
       margin-top: 10px;
   }
+
+  /* MGT DASH */
+  .delete-product-btn {
+      color: rgb(252, 69, 69);
+      cursor: pointer;
+  }
+
+  .edit-product-btn {
+      color: rgb(252, 188, 70);
+      cursor: pointer;
+  }

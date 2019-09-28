@@ -3,7 +3,7 @@
         <div id="products" class="card">
             <h5 class="card-header text-center">Available Products</h5>
             <div id="products-content" class="card-body">
-                {{#if products.count}}
+                {{#if products.length}}
                     <ul class="list-group">
                         {{#each products}}
                             {{> product_pos }}
@@ -28,6 +28,9 @@
                 <div id="empty-cart-msg">
                     <p class="card-text text-muted text-center">No items yet. Add one!</p>
                     <p><i class="fas fa-cart-plus fa-3x"></i></p>
+                </div>
+                <div id="cart-summary">
+
                 </div>
             </div>
             <div class="card-footer text-muted">

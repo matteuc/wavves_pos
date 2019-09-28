@@ -3,7 +3,7 @@
         <div id="products" class="card">
             <h5 class="card-header text-center">All Products</h5>
             <div id="products-content" class="card-body">
-                {{#if products.count}}
+                {{#if products.length}}
                     {{#each products}}
                         {{> product_mgt}}
                     {{/each}}

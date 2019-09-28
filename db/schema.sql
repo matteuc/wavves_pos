@@ -12,7 +12,7 @@ CREATE TABLE products(
 DROP TABLE IF EXISTS sales;
 CREATE TABLE sales(
     id INT NOT NULL auto_increment PRIMARY KEY,
-    sale_date DATE NULL, 
+    sale_date VARCHAR(100) NULL, 
     sale_total DEC(50, 2)
 );
 
@@ -20,7 +20,8 @@ DROP TABLE IF EXISTS products_sold;
 CREATE TABLE products_sold(
     id INT NOT NULL auto_increment PRIMARY KEY,
     sale_id INT NOT NULL, 
-    product_name VARCHAR(100) NULL
+    product_name VARCHAR(100) NULL,
+    quantity INT NOT NULL
 );
 
 

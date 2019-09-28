@@ -3,7 +3,7 @@
         <div id="sales" class="card">
             <h5 class="card-header text-center">All Transactions</h5>
             <div id="products-content" class="card-body">
-                {{#if sales.count}}
+                {{#if sales.length}}
                     <ul class="list-group">
                         {{#each sales}}
                             {{> sale}}
