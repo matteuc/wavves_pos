@@ -2,8 +2,9 @@ $(document).ready(function () {
     var cart = {};
     var total = 0;
     var total_div = $("#total");
+    var emptyCartMsg = $("#empty-cart-msg");
 
-    $("#empty-cart-msg").show();
+    emptyCartMsg.show();
 
 
     var currPath = window.location.pathname;
@@ -43,7 +44,7 @@ $(document).ready(function () {
         product.price = parseFloat($(this).attr("data-price"));
 
         // Hide empty cart message
-        $("#empty-cart-msg").hide();
+        emptyCartMsg.hide();
 
         // Detect if the same product is already in the cart
         if (cart[product.id]) {
@@ -75,6 +76,42 @@ $(document).ready(function () {
         // Display new total
         total += product.price;
         total_div.text(total);
+    });
+
+    $("#checkout-btn").on('click', function () {
+        if(jQuery.isEmptyObject(cart)) {
+            bootbox.alert({
+                message: "But you aint' got anything in your cart though... 🤔",
+                centerVertical: true
+            });
+            return;
+        }
+
+        var newSale = {
+            total: total,
+            products: cart
+        }
+        // Add sale to database
+        $.ajax("/api/sales", {
+            type: "POST",
+            data: newSale
+        }).then(function () {
+            // Send bootstrap alert modal showing order is complete
+            bootbox.alert({
+                message: "Your order is complete! 🥳",
+                centerVertical: true
+            });
+
+            // Clear cart in variable and on page
+            cart = {};
+            emptyCartMsg.show();
+
+            // Display updated total
+            total = 0;
+            total_div.text(total);
+
+        })
+
     });
 
 

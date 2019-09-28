@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div id="products" class="card">
+            <h5 class="card-header text-center">All Products</h5>
+            <div id="products-content" class="card-body">
+                {{#if products.count}}
+                    {{#each products}}
+                        {{> product_mgt}}
+                    {{/each}}
+                {{else}}
+                    <div class="text-center">
+                        <p class="card-text text-muted text-center">No products yet... 😥</p>
+                        <p><i class="fas fa-cubes fa-3x"></i></p>
+                    </div>               
+                {{/if}}
+
+            </div>
+        </div>
+    </div>
+</div>

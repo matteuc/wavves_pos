@@ -22,10 +22,12 @@
     </nav>
     <ul id="dash_tabs" class="nav nav-tabs nav-justified" style="background-color: #6bf5c7;">
         <li class="nav-item">
-            <a id="pos-tab" title="Point of Sale (POS)" class="nav-link" data-link="/"><i class="fas fa-cash-register fa-lg"></i></a>
+            <a id="pos-tab" title="Point of Sale (POS)" class="nav-link" data-link="/"><i
+                    class="fas fa-cash-register fa-lg"></i></a>
         </li>
         <li class="nav-item">
-            <a id="products-tab" title="View & Edit Products" class="nav-link" data-link="/products"><i class="fas fa-boxes fa-lg"></i></a>
+            <a id="products-tab" title="View & Edit Products" class="nav-link" data-link="/products"><i
+                    class="fas fa-boxes fa-lg"></i></a>
         </li>
         <li class="nav-item">
             <a id="sales-tab" title="View Transactions" class="nav-link" data-link="/sales"><i
@@ -33,6 +35,12 @@
         </li>
 
     </ul>
+
+    <div>
+        <span class="text-left">Left</p>
+        <span class="text-right">Right</p>
+
+    </div>
 
     <div class="container" id="main-view">
         {{{ body }}}
@@ -46,6 +54,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.3.2/bootbox.min.js"></script>
 
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/pos.js"></script>
