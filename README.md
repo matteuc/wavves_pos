@@ -1,5 +1,5 @@
 # wavves POS (Point of Sale)
-**wavves**, a simple POS system built on *Express.js* and *Handlebars.js*, is a lightweight business management application designed to help businesses establish an easy to use POS. There are three main functions: a) creating new transactions, b) modifying the products that are available for sale, and c) viewing previous transactions. To get started with **wavves**, follow the instructions below!
+**wavves**, a simple POS system built on *Express.js* and *Handlebars.js*, is a lightweight business management application designed to help businesses establish an easy to use POS. There are three main functions: a) creating new transactions, b) modifying the products that are available for sale, and c) viewing previous transactions. To get started with **wavves**, follow the instructions below! You can also view the deployed app [here](https://wavves-pos.herokuapp.com/)!
 
 ## Usage 
 The **wavves** POS can be initiated via the command line:
